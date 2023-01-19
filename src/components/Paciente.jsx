@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
-    const { nombre, propietario, telefono, fecha, sintomas, id, raza, peso, edad } = paciente
+    const { nombre, propietario, telefono, fecha, sintomas, id, raza, peso, edad, animal } = paciente
 
     const handleEliminar = () => {
         const respuesta = confirm('Deseas eliminar este paciente?');
@@ -27,6 +27,7 @@ const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
           <Typography ><p className='flex gap-7 '>
            <span className='font-bold  text-gray-700  normal-case'> Propietario: {propietario}</span>
             <span className='font-bold  text-gray-700  normal-case'>Mascota: {nombre}</span>
+            <span className='font-bold  text-gray-700  normal-case'>Animal: {animal}</span>
             </p></Typography>
         </AccordionSummary>
         <AccordionDetails>

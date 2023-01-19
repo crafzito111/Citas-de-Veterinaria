@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import AnimalSelect from './AnimalSelect';
 import Error from './Error'
 
 const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
@@ -10,6 +11,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
     const [raza, setRaza] = useState('')
     const [peso, setPeso] = useState('')
     const [edad, setEdad] = useState('')
+    const [animal, setAnimal] = useState('')
 
     const [error, setError] = useState(false)
 
@@ -23,6 +25,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
             setRaza(paciente.raza)
             setPeso(paciente.peso)
             setEdad(paciente.edad)
+            setAnimal(paciente.animal)
 
         }
     }, [paciente])
@@ -40,7 +43,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
         e.preventDefault();
 
         // Validación del Formulario
-        if( [ nombre, propietario, telefono, fecha, raza, sintomas ].includes('') ) {
+        if( [ nombre, propietario, telefono, fecha, raza, sintomas, animal ].includes('') ) {
             console.log('Hay Al Menos un campo vacio')
 
             setError(true)
@@ -59,6 +62,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
             raza,
             peso,
             edad,
+            animal,
             sintomas
         }
 
@@ -84,6 +88,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
         setRaza('')
         setPeso('')
         setEdad('')
+        setAnimal('')
         setSintomas('')
 
     }
@@ -195,6 +200,11 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
                         onChange={ (e) => setEdad(e.target.value) }
                     />  
                 </div>
+
+                <AnimalSelect
+                setAnimal={setAnimal}
+                animal={animal}
+                />
 
                 <div className="mb-5">
                     <label htmlFor="sintomas" className="block text-gray-700 uppercase font-bold">
