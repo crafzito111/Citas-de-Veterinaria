@@ -5,17 +5,15 @@ import ListadoPacientes from "./components/ListadoPacientes"
 
 function App() {
 
+  const [loading, setLoading] = useState(false)
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    return () => {
       setLoading(true)
       setTimeout(() => {
         setLoading(false)
-      }, 2100);
-    }
+      }, 1700);
   }, [])
 
   useEffect(() => {
@@ -63,7 +61,7 @@ function App() {
 </div>
 
   </div>
-  
+
     :
 
     <div className="container mx-auto mt-20">

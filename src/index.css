@@ -5,7 +5,7 @@
 
 .wheel-and-hamster {
     --dur: 1s;
-    position: relative;
+    position: fixed;
     width: 12em;
     height: 12em;
     font-size: 14px;
