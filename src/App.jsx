@@ -7,6 +7,16 @@ function App() {
 
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    return () => {
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 2100);
+    }
+  }, [])
 
   useEffect(() => {
     const obtenerLS = () => {
@@ -25,25 +35,59 @@ function App() {
     setPacientes(pacientesActualizados)
   }
 
+
+
   return (
+  <>
+  {
+    loading ?
+
+  <div className='flex justify-center items-center  h-screen'>
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" className="wheel-and-hamster  ">
+	<div className="wheel"></div>
+	<div className="hamster">
+		<div className="hamster__body">
+			<div className="hamster__head">
+				<div className="hamster__ear"></div>
+				<div className="hamster__eye"></div>
+				<div className="hamster__nose"></div>
+			</div>
+			<div class="hamster__limb hamster__limb--fr"></div>
+			<div class="hamster__limb hamster__limb--fl"></div>
+			<div class="hamster__limb hamster__limb--br"></div>
+			<div class="hamster__limb hamster__limb--bl"></div>
+			<div class="hamster__tail"></div>
+		</div>
+	</div>
+	<div class="spoke"></div>
+</div>
+
+  </div>
+  
+    :
+
     <div className="container mx-auto mt-20">
-      <Header />
+    <Header />
 
-      <div className="mt-12 md:flex">
-          <Formulario 
-            pacientes={pacientes}
-            setPacientes={setPacientes}
-            paciente={paciente}
-            setPaciente={setPaciente}
-          />
-          <ListadoPacientes 
-            pacientes={pacientes}
-            setPaciente={setPaciente}
-            eliminarPaciente={eliminarPaciente}
-          />
-      </div>
-
+    <div className="mt-12 md:flex">
+        <Formulario 
+          pacientes={pacientes}
+          setPacientes={setPacientes}
+          paciente={paciente}
+          setPaciente={setPaciente}
+        />
+        <ListadoPacientes 
+          pacientes={pacientes}
+          setPaciente={setPaciente}
+          eliminarPaciente={eliminarPaciente}
+        />
     </div>
+
+  </div>
+  }
+ 
+  </>
+  
   )
 }
 

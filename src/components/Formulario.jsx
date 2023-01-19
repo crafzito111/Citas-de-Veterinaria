@@ -4,9 +4,12 @@ import Error from './Error'
 const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
     const [nombre, setNombre] = useState('');
     const [propietario, setPropietario] = useState('');
-    const [email, setEmail] = useState('');
+    const [telefono, setTelefono] = useState('');
     const [fecha, setFecha] = useState('');
     const [sintomas, setSintomas] = useState('');
+    const [raza, setRaza] = useState('')
+    const [peso, setPeso] = useState('')
+    const [edad, setEdad] = useState('')
 
     const [error, setError] = useState(false)
 
@@ -14,9 +17,13 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
         if( Object.keys(paciente).length > 0  ) {
             setNombre(paciente.nombre)
             setPropietario(paciente.propietario)
-            setEmail(paciente.email)
+            setTelefono(paciente.telefono)
             setFecha(paciente.fecha)
             setSintomas(paciente.sintomas)
+            setRaza(paciente.raza)
+            setPeso(paciente.peso)
+            setEdad(paciente.edad)
+
         }
     }, [paciente])
 
@@ -33,7 +40,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
         e.preventDefault();
 
         // Validación del Formulario
-        if( [ nombre, propietario, email, fecha, sintomas ].includes('') ) {
+        if( [ nombre, propietario, telefono, fecha, raza, sintomas ].includes('') ) {
             console.log('Hay Al Menos un campo vacio')
 
             setError(true)
@@ -47,8 +54,11 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
         const objetoPaciente = {
             nombre, 
             propietario, 
-            email, 
+            telefono, 
             fecha, 
+            raza,
+            peso,
+            edad,
             sintomas
         }
 
@@ -69,14 +79,17 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
         // Reiniciar el form
         setNombre('')
         setPropietario('')
-        setEmail('')
+        setTelefono('')
         setFecha('')
+        setRaza('')
+        setPeso('')
+        setEdad('')
         setSintomas('')
 
     }
 
     return (
-        <div className="md:w-1/2 lg:w-2/5 mx-5">
+        <div className="md:w-1/2 lg:w-2/5 mx-5 animate__animated animate__zoomIn">
             <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
 
             <p className="text-lg mt-5 text-center mb-10">
@@ -118,22 +131,22 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
                 </div>
 
                 <div className="mb-5">
-                    <label htmlFor="email" className="block text-gray-700 uppercase font-bold">
-                        Email
+                    <label htmlFor="number" className="block text-gray-700 uppercase font-bold">
+                       Telefóno
                     </label>
                     <input
-                        id="email"
-                        type="email"
-                        placeholder="Email Contacto Propietario"
+                        id="number"
+                        type="tel"
+                        placeholder="Numero de Contacto del Propietario"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                        value={email}
-                        onChange={ (e) => setEmail(e.target.value) }
+                        value={telefono}
+                        onChange={ (e) => setTelefono(e.target.value) }
                     />  
                 </div>
 
                 <div className="mb-5">
                     <label htmlFor="alta" className="block text-gray-700 uppercase font-bold">
-                        Alta
+                        Fecha de Ingreso
                     </label>
                     <input
                         id="alta"
@@ -141,6 +154,45 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         value={fecha}
                         onChange={ (e) => setFecha(e.target.value) }
+                    />  
+                </div>
+
+                <div className="mb-5">
+                    <label htmlFor="raza" className="block text-gray-700 uppercase font-bold">
+                        Raza
+                    </label>
+                    <input
+                        id="raza"
+                        type="text"
+                        className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                        value={raza}
+                        onChange={ (e) => setRaza(e.target.value) }
+                    />  
+                </div>
+
+                <div className="mb-5">
+                    <label htmlFor="peso" className="block text-gray-700 uppercase font-bold">
+                       Peso
+                    </label>
+                    <input
+                        id="peso"
+                        type="text"
+                        className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                        value={peso}
+                        onChange={ (e) => setPeso(e.target.value) }
+                    />  
+                </div>
+
+                <div className="mb-5">
+                    <label htmlFor="edad" className="block text-gray-700 uppercase font-bold">
+                       Edad
+                    </label>
+                    <input
+                        id="edad"
+                        type="number"
+                        className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                        value={edad}
+                        onChange={ (e) => setEdad(e.target.value) }
                     />  
                 </div>
 
