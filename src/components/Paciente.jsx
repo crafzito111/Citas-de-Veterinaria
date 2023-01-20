@@ -25,8 +25,8 @@ const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
           id="panel1a-header"
         >
           <Typography ><p className='flex gap-7 '>
-           <span className='font-bold  text-gray-700  normal-case w-40'> Propietario: {propietario}</span>
-            <span className='font-bold  text-gray-700  normal-case w-36'>Mascota: {nombre}</span>
+           <span className='font-bold  text-gray-700  normal-case '> Propietario: {propietario}</span>
+            <span className='font-bold  text-gray-700  normal-case'>Mascota: {nombre}</span>
             <span className='font-bold  text-gray-700  normal-case'>Animal: {animal}</span>
             </p></Typography>
         </AccordionSummary>
